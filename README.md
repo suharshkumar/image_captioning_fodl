@@ -53,6 +53,7 @@ BATCH_SIZE = 64 # Training batch size
 
 ## 📁 Project Structure
 
+```
 image-captioning/
 ├── src/
 │ ├── model_builder.py # Neural architecture definitions
@@ -67,6 +68,37 @@ image-captioning/
 │ └── captions.txt # Ground truth captions
 └── notebooks/
 └── experiments.ipynb # Research experiments
+```
+
+Do not forget to start and end with three backticks on their own lines. If you omit these or use only one backtick, the formatting will break and lines may run together.
+
+Common Mistakes
+Missing code block: Not using triple backticks will cause Markdown to collapse your structure into a single line or remove indentation.
+
+Inline code: Using single backticks (`) creates inline code, not a block.
+
+Copy-paste from editors: If you copy-paste from some editors, invisible characters or inconsistent indentation may also break the formatting. Always check in the GitHub preview after committing.
+
+Tips
+For best results, generate the tree with the tree command in your terminal, then copy the output and paste it between triple backticks in your README.
+
+Use spaces for indentation, not tabs, as tabs may render inconsistently on GitHub.
+
+Preview your README on GitHub before finalizing your commit to ensure the structure appears as intended.
+
+References
+Use the tree command or similar utilities to generate directory trees.
+
+Always use triple backticks for code blocks in Markdown to preserve formatting.
+
+By following these steps, your directory structure will display correctly and professionally in your GitHub README.
+
+Related
+How can I preserve the directory structure when committing to GitHub
+Why does my folder structure appear flattened after commit in README
+What Git or Markdown settings affect folder display in README files
+How do I ensure indentation and hierarchy are maintained in markdown code blocks
+Are there specific formatting tips to keep my project structure clear in documentation
 
 
 ## 🚀 Quick Start
