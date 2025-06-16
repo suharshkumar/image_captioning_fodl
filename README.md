@@ -70,37 +70,6 @@ image-captioning/
 └── experiments.ipynb # Research experiments
 ```
 
-Do not forget to start and end with three backticks on their own lines. If you omit these or use only one backtick, the formatting will break and lines may run together.
-
-Common Mistakes
-Missing code block: Not using triple backticks will cause Markdown to collapse your structure into a single line or remove indentation.
-
-Inline code: Using single backticks (`) creates inline code, not a block.
-
-Copy-paste from editors: If you copy-paste from some editors, invisible characters or inconsistent indentation may also break the formatting. Always check in the GitHub preview after committing.
-
-Tips
-For best results, generate the tree with the tree command in your terminal, then copy the output and paste it between triple backticks in your README.
-
-Use spaces for indentation, not tabs, as tabs may render inconsistently on GitHub.
-
-Preview your README on GitHub before finalizing your commit to ensure the structure appears as intended.
-
-References
-Use the tree command or similar utilities to generate directory trees.
-
-Always use triple backticks for code blocks in Markdown to preserve formatting.
-
-By following these steps, your directory structure will display correctly and professionally in your GitHub README.
-
-Related
-How can I preserve the directory structure when committing to GitHub
-Why does my folder structure appear flattened after commit in README
-What Git or Markdown settings affect folder display in README files
-How do I ensure indentation and hierarchy are maintained in markdown code blocks
-Are there specific formatting tips to keep my project structure clear in documentation
-
-
 ## 🚀 Quick Start
 
 ### Installation
@@ -121,13 +90,13 @@ Key Image Captioning Code Components
 Model Architecture Implementation
 Here are the critical code sections extracted from your notebook for the image captioning models:
 
-python
+'''
 def build_captioning_model(feature_dim, max_length, vocab_size, embedding_dim, units, dropout_rate, rnn_lstm_dropout, decoder_type='lstm'):
     # Image feature encoder
     inputs1 = Input(shape=(feature_dim,), name='image_features')
     fe1 = Dropout(dropout_rate)(inputs1)
     fe2 = Dense(units, activation='relu')(fe1) # Project feature to state size
-
+    
     # Caption sequence input
     inputs2 = Input(shape=(max_length,), name='caption_input')
     se1 = Embedding(vocab_size, embedding_dim, mask_zero=True)(inputs2)
@@ -149,6 +118,10 @@ def build_captioning_model(feature_dim, max_length, vocab_size, embedding_dim, u
     model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     
     return model
+
+'''
+
+'''
 Caption Generation Function
 python
 def generate_caption(model, tokenizer, image_feature, max_length, decoder_type='lstm'):
@@ -175,8 +148,10 @@ def generate_caption(model, tokenizer, image_feature, max_length, decoder_type='
     caption_out = [word for word in final_caption_words if word not in ['<start>', '<end>']]
     
     return ' '.join(caption_out)
-Professional GitHub README Template
-text
+
+
+'''
+
 # 🖼️ Neural Image Captioning with Encoder-Decoder Architecture
 
 ## 🎯 Project Overview
@@ -225,91 +200,4 @@ UNITS = 50 # RNN/LSTM hidden units
 VOCAB_SIZE_LIMIT = 5000 # Vocabulary size
 MAX_LENGTH = 38 # Maximum caption length
 BATCH_SIZE = 64 # Training batch size
-
-text
-
-## 📁 Project Structure
-image-captioning/
-├── src/
-│ ├── model_builder.py # Neural architecture definitions
-│ ├── data_processor.py # Data preprocessing utilities
-│ ├── trainer.py # Training pipeline
-│ └── inference.py # Caption generation
-├── models/
-│ ├── rnn_model.keras # Trained RNN model
-│ └── lstm_model.keras # Trained LSTM model
-├── data/
-│ ├── images/ # Input image dataset
-│ └── captions.txt # Ground truth captions
-└── notebooks/
-└── experiments.ipynb # Research experiments
-
-text
-
-## 🚀 Quick Start
-
-### Installation
-pip install tensorflow opencv-python nltk numpy pandas matplotlib
-python -m nltk.downloader punkt stopwords
-
-text
-
-### Training
-Configure model type
-DECODER_TYPE = 'lstm' # or 'rnn'
-
-Build and train model
-model = build_captioning_model(
-feature_dim=512,
-vocab_size=5000,
-embedding_dim=200,
-units=50,
-decoder_type=DECODER_TYPE
-)
-
-Train with your dataset
-history = model.fit(train_generator, validation_data=val_generator, epochs=15)
-
-text
-
-### Inference
-Generate caption for new image
-generated_caption = generate_caption(
-model, tokenizer, image_features,
-max_length=38, decoder_type='lstm'
-)
-print(f"Generated Caption: {generated_caption}")
-
-text
-
-## 🎯 Research Contributions
-
-- **Comparative Analysis**: Empirical evaluation of RNN vs LSTM decoder performance
-- **Optimization Strategy**: Custom data generators for memory-efficient training
-- **Evaluation Framework**: Comprehensive BLEU score implementation
-- **Ablation Studies**: Impact of different architectural components
-
-## 📈 Future Enhancements
-
-- [ ] Transformer-based decoder implementation
-- [ ] Attention visualization mechanisms  
-- [ ] Multi-modal feature fusion
-- [ ] Real-time inference optimization
-- [ ] Beam search decoding strategy
-
-## 📊 Dataset & Preprocessing
-
-- **Image Processing**: 299×299 RGB normalization
-- **Text Processing**: Tokenization with start/end tokens
-- **Data Augmentation**: Random sampling for robust training
-- **Vocabulary Management**: OOV token handling
-
-## 🏆 Academic Context
-
-Developed as part of **CS6910: Fundamentals of Deep Learning** coursework, demonstrating mastery of:
-- Encoder-decoder architectures
-- Recurrent neural networks
-- Computer vision integration
-- Natural language processing
-- Model evaluation methodologies
 
